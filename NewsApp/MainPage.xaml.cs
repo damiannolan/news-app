@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NewsApp.Models;
+using NewsApp.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +24,19 @@ namespace NewsApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        private INewsService newsService;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            newsService = new NewsService();
+        }
+
+        private async void button_Click(object sender, RoutedEventArgs e)
+        {
+            var sources = await newsService.GetSources();
         }
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
