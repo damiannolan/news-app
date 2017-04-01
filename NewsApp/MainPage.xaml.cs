@@ -2,6 +2,7 @@
 using NewsApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -26,22 +27,31 @@ namespace NewsApp
     {
 
         private INewsService newsService;
+        private List<NewsSource> NewsSources;
 
         public MainPage()
         {
             this.InitializeComponent();
 
             newsService = new NewsService();
+            loadNewsSources();
         }
-
-        private async void button_Click(object sender, RoutedEventArgs e)
+        
+/*        private async void button_Click(object sender, RoutedEventArgs e)
         {
             var sources = await newsService.GetSources();
+            this.NewsSources = sources.Sources;
+        }
+*/
+        private async void loadNewsSources()
+        {
+            var sources = await newsService.GetSources();
+            this.NewsSources = sources.Sources;
         }
 
-        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            
         }
     }
 }

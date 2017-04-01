@@ -5,13 +5,46 @@
     xmlns:local="using:NewsApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:NewsApp.Models" 
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="NewsSourceListDataTemplate" x:DataType="data:NewsSource">
+            <StackPanel Margin="20,20,0,0">
+                <TextBlock Text="{x:Bind Name}" HorizontalAlignment="Left" FontSize="16" />
+                <TextBlock Text="{x:Bind Description}" HorizontalAlignment="Left" FontSize="10" />
+                <TextBlock Text="{x:Bind Category}" HorizontalAlignment="Left" FontSize="10" />
+            </StackPanel>
+            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                --><!--<Image Name="image" Source="{x:Bind UrlsToLogos}" HorizontalAlignment="Center" Width="150" />--><!--
+                
+            </StackPanel>-->
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,20,20,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="1" 
+                   Name="ResultTextBlock" 
+                   FontSize="24" 
+                   Foreground="Red" 
+                   FontWeight="Bold" 
+                   Margin="20,20,0,0" />
+        <ListView ItemsSource="{x:Bind NewsSources}" 
+                  ItemClick="ListView_ItemClick" 
+                  IsItemClickEnabled="True" 
+                  ItemTemplate="{StaticResource NewsSourceListDataTemplate}" BorderThickness="5">
+        </ListView>
+    </Grid>
+    
+    
+    
+    <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="96,52,0,0" VerticalAlignment="Top" Click="button_Click"/>
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="193" Margin="10,178,0,0" VerticalAlignment="Top" Width="305" SelectionChanged="listView_SelectionChanged"/>
-
-
-
-    </Grid>
+    </Grid>-->
 </Page>
