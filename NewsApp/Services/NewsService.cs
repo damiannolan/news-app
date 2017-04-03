@@ -41,11 +41,10 @@ namespace NewsApp.Services
 
             if (response.IsSuccessStatusCode)
             {
-                Debug.WriteLine(response.Content);
+                //Debug.WriteLine(response.Content);
                 return await response.Content.ReadAsAsync<NewsSourceList>();
 
                 //var jsonStr = await response.Content.ReadAsStringAsync();                
-
                 //var jsonSettings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
                 //var manualDeserialisation = JsonConvert.DeserializeObject<NewsSourceList>(jsonStr);
                 //return manualDeserialisation;

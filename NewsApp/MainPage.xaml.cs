@@ -2,6 +2,7 @@
 using NewsApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -27,31 +28,54 @@ namespace NewsApp
     {
 
         private INewsService newsService;
-        private List<NewsSource> NewsSources;
+        private ObservableCollection<NewsSource> newsSources;
+        
 
         public MainPage()
         {
             this.InitializeComponent();
 
             newsService = new NewsService();
-            loadNewsSources();
+            newsSources = new ObservableCollection<NewsSource>();
         }
-        
-/*        private async void button_Click(object sender, RoutedEventArgs e)
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var sources = await newsService.GetSources();
-            this.NewsSources = sources.Sources;
+            // Call LoadNewsSources() to hit the NewsApi
+            LoadNewsSources();
+          
+            base.OnNavigatedTo(e);
+
         }
-*/
-        private async void loadNewsSources()
+
+        private async void LoadNewsSources()
         {
+            // Call GetSources() and await the task
             var sources = await newsService.GetSources();
-            this.NewsSources = sources.Sources;
+
+            // Clear() the newSources ObservableCollection
+            // So that if the page is navigated to for a 2nd time there will not be duplicated content
+            newsSources.Clear();
+
+            // Add each NewsSource to the ObservableCollection
+            foreach (var source in sources.Sources)
+            {
+                newsSources.Add(source);
+            }
+
+            // Not working like this - UI won't update
+            //newsSources = sources.Sources
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            // Add sources manually to the collection to test UI updating
+            newsSources.Add(new NewsSource() { Id = "1", Name = "NewsTest", Description = "This is a test" });
         }
     }
 }

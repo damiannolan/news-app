@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NewsApp.Models
 {
-    public class NewsSourceList
+    public class NewsSourceLogos
     {
-        public List<NewsSource> Sources { get; set; }
+        public string Small { get; set; }
+        public string Medium { get; set; }
+        public string Large { get; set; }
     }
 }

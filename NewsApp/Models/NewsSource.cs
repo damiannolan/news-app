@@ -14,6 +14,6 @@ namespace NewsApp.Models
         public string Description { get; set; }
         public string Url { get; set; }
         public string Category { get; set; }
-        public Dictionary<string, string> UrlsToLogos { get; set; }
+        public NewsSourceLogos UrlsToLogos { get; set; }
     }
 }

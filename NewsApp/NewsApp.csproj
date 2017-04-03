@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="Models\NewsSource.cs" />
     <Compile Include="Models\NewsSourceList.cs" />
+    <Compile Include="Models\NewsSourceLogos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NewsService.cs" />
   </ItemGroup>
