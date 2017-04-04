@@ -10,13 +10,21 @@
 
     <Page.Resources>
         <DataTemplate x:Key="NewsSourceListDataTemplate" x:DataType="data:NewsSource">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Image Name="image" Source="{x:Bind UrlsToLogos.Small}" HorizontalAlignment="Center" Width="150" />
-                <StackPanel Margin="20,20,0,0">
-                    <TextBlock Text="{x:Bind Name}" HorizontalAlignment="Left" FontSize="16" />
-                    <TextBlock Text="{x:Bind Description}" HorizontalAlignment="Left" FontSize="10" />
-                    <TextBlock Text="{x:Bind Category}" HorizontalAlignment="Left" FontSize="10" />
-                </StackPanel>
+            
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <!--<Image Name="image" Source="{x:Bind UrlsToLogos.Small}" HorizontalAlignment="Center" Width="150" />-->
+                <Ellipse Height="150" Width="150" HorizontalAlignment="Left">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{x:Bind UrlsToLogos.Small}" Stretch="Uniform"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Text="{x:Bind Name}" HorizontalAlignment="Left" FontSize="16" />
+                <TextBlock Text="{x:Bind Category}" HorizontalAlignment="Left" FontSize="12" />
+                <TextBlock Text="{x:Bind Description}" HorizontalAlignment="Left" TextWrapping="Wrap"  FontSize="12" />
+                <HyperlinkButton Content="{x:Bind Url}" NavigateUri="{x:Bind Url}" HorizontalAlignment="Left" FontSize="10"/>
+
+                <!--<StackPanel Margin="20,20,0,0" Orientation="Vertical" HorizontalAlignment="Left">                   
+                </StackPanel>-->              
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
@@ -26,6 +34,10 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         
         <TextBlock Grid.Row="1" 
                    Name="ResultTextBlock" 
@@ -33,12 +45,15 @@
                    Foreground="Red" 
                    FontWeight="Bold" 
                    Margin="20,20,0,0" />
-        <ListView ItemsSource="{x:Bind newsSources}" 
+        <ListView x:Name="newsSourceListView"
+                  HorizontalContentAlignment="Stretch"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ItemsSource="{x:Bind newsSources}" 
                   ItemClick="ListView_ItemClick" 
                   IsItemClickEnabled="True" 
-                  ItemTemplate="{StaticResource NewsSourceListDataTemplate}" BorderThickness="5">
+                  ItemTemplate="{StaticResource NewsSourceListDataTemplate}" BorderThickness="5" Margin="44,53,36,-5">
         </ListView>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="149,20,0,0" Grid.Row="1" VerticalAlignment="Top" Click="button_Click"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="143,20,0,0" Grid.Row="1" VerticalAlignment="Top" Click="button_Click"/>
     </Grid>
     
     

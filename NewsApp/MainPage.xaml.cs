@@ -69,7 +69,9 @@ namespace NewsApp
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            NewsSource source = (NewsSource) e.ClickedItem;
+
+            this.Frame.Navigate(typeof(ArticlesPage), source.Id);
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
