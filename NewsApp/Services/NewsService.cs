@@ -66,10 +66,10 @@ namespace NewsApp.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var articles = await response.Content.ReadAsAsync<ArticleList>();
+                //var articles = await response.Content.ReadAsAsync<ArticleList>();
 
-                //return await response.Content.ReadAsAsync<ArticleList>();
-                return articles;
+                return await response.Content.ReadAsAsync<ArticleList>();
+                //return articles;
             }
 
             return null;

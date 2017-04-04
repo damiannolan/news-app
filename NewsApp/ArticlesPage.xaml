@@ -4,10 +4,40 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NewsApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:NewsApp.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="ArticleListDataTemplate" x:DataType="data:Article">
 
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <Image Name="image" Source="{x:Bind UrlToImage}" HorizontalAlignment="Left" Width="500" />
+
+                <TextBlock Text="{x:Bind Title}" HorizontalAlignment="Left" FontSize="16" />
+                <TextBlock Text="{x:Bind Author}" HorizontalAlignment="Left" FontSize="12" />
+                <TextBlock Text="{x:Bind Description}" HorizontalAlignment="Left" TextWrapping="Wrap"  FontSize="12" />
+                <HyperlinkButton Content="{x:Bind Url}" NavigateUri="{x:Bind Url}" HorizontalAlignment="Left" FontSize="10"/>
+
+                <!--<StackPanel Margin="20,20,0,0" Orientation="Vertical" HorizontalAlignment="Left">                   
+                </StackPanel>-->
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="articleListView"
+                  HorizontalContentAlignment="Stretch"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ItemsSource="{x:Bind articles}" 
+                  ItemClick="ListView_ItemClick"
+                  IsItemClickEnabled="True" 
+                  ItemTemplate="{StaticResource ArticleListDataTemplate}" BorderThickness="5" Margin="44,53,36,-5">
+        </ListView>
     </Grid>
 </Page>

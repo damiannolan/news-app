@@ -60,5 +60,10 @@ namespace NewsApp
                 articles.Add(article);
             }
         }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+          
+        }
     }
 }
