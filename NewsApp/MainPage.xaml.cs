@@ -30,7 +30,6 @@ namespace NewsApp
         private INewsService newsService;
         private ObservableCollection<NewsSource> newsSources;
         
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -63,14 +62,14 @@ namespace NewsApp
                 newsSources.Add(source);
             }
 
-            // Not working like this - UI won't update
-            //newsSources = sources.Sources
+            // newsSources = sources.Sources /*** Not working like this - UI won't update. Have to invoke .Add() ***/
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             NewsSource source = (NewsSource) e.ClickedItem;
 
+            // Navigate to the articles page and pass the source Id to fetch appropriate content
             this.Frame.Navigate(typeof(ArticlesPage), source.Id);
         }
 
