@@ -8,6 +8,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <AppBarButton x:Name="backButton" HorizontalAlignment="Left" Icon="Back" Click="backButton_Click"/>
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.BottomAppBar>
+
     <Page.Resources>
         <DataTemplate x:Key="ArticleListDataTemplate" x:DataType="data:Article">
 
@@ -25,7 +33,7 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="Gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />

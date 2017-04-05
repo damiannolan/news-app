@@ -72,11 +72,5 @@ namespace NewsApp
             // Navigate to the articles page and pass the source Id to fetch appropriate content
             this.Frame.Navigate(typeof(ArticlesPage), source.Id);
         }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            // Add sources manually to the collection to test UI updating
-            newsSources.Add(new NewsSource() { Id = "1", Name = "NewsTest", Description = "This is a test" });
-        }
     }
 }

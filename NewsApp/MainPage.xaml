@@ -18,8 +18,8 @@
                         <ImageBrush ImageSource="{x:Bind UrlsToLogos.Small}" Stretch="Uniform"/>
                     </Ellipse.Fill>
                 </Ellipse>
-                <TextBlock Text="{x:Bind Name}" HorizontalAlignment="Left" FontSize="16" />
-                <TextBlock Text="{x:Bind Category}" HorizontalAlignment="Left" FontSize="12" />
+                <TextBlock Text="{x:Bind Name}" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" />
+                <TextBlock Text="{x:Bind Category}" HorizontalAlignment="Left" FontSize="12" FontStyle="Italic"/>
                 <TextBlock Text="{x:Bind Description}" HorizontalAlignment="Left" TextWrapping="Wrap"  FontSize="12" />
                 <HyperlinkButton Content="{x:Bind Url}" NavigateUri="{x:Bind Url}" HorizontalAlignment="Left" FontSize="10"/>
 
@@ -28,8 +28,8 @@
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
-    
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,20,20,0">
+
+    <Grid Background="Gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
@@ -38,7 +38,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        
+
         <TextBlock Grid.Row="1" 
                    Name="ResultTextBlock" 
                    FontSize="24" 
@@ -51,15 +51,7 @@
                   ItemsSource="{x:Bind newsSources}" 
                   ItemClick="ListView_ItemClick" 
                   IsItemClickEnabled="True" 
-                  ItemTemplate="{StaticResource NewsSourceListDataTemplate}" BorderThickness="5" Margin="44,53,36,-5">
+                  ItemTemplate="{StaticResource NewsSourceListDataTemplate}" BorderThickness="5" Margin="44,53,36,-5" RequestedTheme="Light">
         </ListView>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="143,20,0,0" Grid.Row="1" VerticalAlignment="Top" Click="button_Click"/>
     </Grid>
-    
-    
-    
-    <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="96,52,0,0" VerticalAlignment="Top" Click="button_Click"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="193" Margin="10,178,0,0" VerticalAlignment="Top" Width="305" SelectionChanged="listView_SelectionChanged"/>
-    </Grid>-->
 </Page>
