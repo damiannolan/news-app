@@ -8,15 +8,27 @@
     mc:Ignorable="d">
 
     <Grid Background="Gray">
-
-        <StackPanel>
-            <TextBlock Text="Info"  HorizontalAlignment="Center" FontStyle="Italic" FontSize="32" FontWeight="Bold" />
+        <ScrollViewer>
+            <StackPanel Margin="20, 20, 20, 20">
+                <TextBlock Text="Info"  HorizontalAlignment="Center" FontStyle="Italic" FontSize="32" FontWeight="Bold" />
             
-            <TextBox Margin="20, 20, 20, 20"
-                     Text="A 3rd year undergraduate project in Mobile Applications development to demonstrate an understanding of C# programming and Universal Windows Platform applications." 
-                     TextWrapping="Wrap"/>
+                <TextBlock Margin="20, 20, 20, 20"
+                           Text="A 3rd year undergraduate project in Mobile Applications development to demonstrate an understanding of C# programming and Universal Windows Platform applications. " 
+                           TextWrapping="Wrap"
+                           FontSize="18"/>
+                <TextBlock Margin="20, 20, 20, 20"
+                           Text="The primary goal of this application was to exercise and learn about the consuming of a Restful web service using C# and the .NET framework. As well as to learn the basics of using local storage in UWP applications." 
+                           TextWrapping="Wrap"
+                           FontSize="18"/>
 
-        </StackPanel>
+                <TextBlock Margin="20, 20, 20, 20"
+                           Text="The Open Source project NewsApi.org that was used for the aggregration of news sources and articles on this application is linked below as well as a link to my Github repository containing the source code for the application." 
+                           TextWrapping="Wrap"
+                           FontSize="18"/>
 
+                <HyperlinkButton Content="NewsApi.org" NavigateUri="https://newsapi.org" HorizontalAlignment="Center" FontSize="16"/>
+                <HyperlinkButton Content="Damian Nolan - Github" NavigateUri="https://www.github.com/damiannolan/news-app" HorizontalAlignment="Center" FontSize="16"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

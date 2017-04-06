@@ -8,14 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <!--<Page.BottomAppBar>
-        <CommandBar>
-            <CommandBar.Content>
-                <AppBarButton x:Name="backButton" HorizontalAlignment="Center" Icon="Back" Click="backButton_Click"/>
-            </CommandBar.Content>
-        </CommandBar>
-    </Page.BottomAppBar>-->
-
     <Page.Resources>
         <DataTemplate x:Key="ArticleListDataTemplate" x:DataType="data:Article">
 

@@ -39,12 +39,12 @@ namespace NewsApp
             articles = new ObservableCollection<Article>();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             source = (NewsSource) e.Parameter;
-
             LoadArticles(source.Id);
 
+            List<Article> favourites = await storageService.GetArticlesFromStorage();
             base.OnNavigatedTo(e);
         }
 

@@ -3,6 +3,7 @@ using NewsApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -37,12 +38,22 @@ namespace NewsApp
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            List<Article> favouritesList = await storageService.GetArticlesFromStorage();
-
-            foreach(var article in favouritesList)
+            textBlock.Text = "";
+            try
             {
-                favourites.Add(article);
+                List<Article> favouritesList = await storageService.GetArticlesFromStorage();
+
+                foreach (var article in favouritesList)
+                {
+                    favourites.Add(article);
+                }
+            } catch (Exception exc)
+            {
+                textBlock.Text = "No Favourites Found";
+
+                //favourites.Add(new Article { Author = " ", Title = "No favourites found", Description = " ", UrlToImage = "https://unsplash.it/200/300/?random", PublishedAt = " ", Url = " " });
             }
+            
             base.OnNavigatedTo(e);
         }
 

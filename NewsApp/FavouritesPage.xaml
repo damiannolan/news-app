@@ -29,6 +29,7 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <TextBlock HorizontalAlignment="Center" Text="Favourites" FontSize="32" FontWeight="Bold" FontStyle="Italic"/>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Center" TextWrapping="Wrap"/>
         </StackPanel>
         <ListView x:Name="favouritesListView"
                   HorizontalContentAlignment="Stretch"

@@ -51,8 +51,6 @@ namespace NewsApp.Services
 
         public async Task<List<Article>> GetArticlesFromStorage()
         {
-            favourites = new List<Article>();
-
             // Serilize the List<Article> from the file
             var Serializer = new DataContractSerializer(typeof(List<Article>));
             using (var stream = await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("MyList"))
@@ -66,7 +64,7 @@ namespace NewsApp.Services
 
         public void AddToFavourites(Article article)
         {
-            this.favourites.Add(article);
+            favourites.Add(article);
         }
 
     }
