@@ -39,19 +39,21 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="1" 
-                   Name="ResultTextBlock" 
-                   FontSize="24" 
-                   Foreground="Red" 
-                   FontWeight="Bold" 
-                   Margin="20,20,0,0" />
+        
+        <CommandBar Style="{StaticResource CustomCommandBar}">
+            <AppBarButton Icon="ContactInfo" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Favorite" Click="AppBarButton_Click_1"/>
+        </CommandBar>
+        
+        
         <ListView x:Name="newsSourceListView"
                   HorizontalContentAlignment="Stretch"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
                   ItemsSource="{x:Bind newsSources}" 
                   ItemClick="ListView_ItemClick" 
                   IsItemClickEnabled="True" 
-                  ItemTemplate="{StaticResource NewsSourceListDataTemplate}" BorderThickness="5" Margin="5" RequestedTheme="Light" Grid.RowSpan="2">
+                  ItemTemplate="{StaticResource NewsSourceListDataTemplate}" BorderThickness="5" Margin="5,60,5,5" RequestedTheme="Light" Grid.RowSpan="2">
         </ListView>
     </Grid>
 </Page>

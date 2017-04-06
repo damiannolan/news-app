@@ -27,6 +27,7 @@ namespace NewsApp
     {
         private INewsService newsService;
         private ObservableCollection<Article> articles;
+        private NewsSource source;
 
         public ArticlesPage()
         {
@@ -38,9 +39,9 @@ namespace NewsApp
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var sourceId = e.Parameter.ToString();
+            source = (NewsSource) e.Parameter;
 
-            LoadArticles(sourceId);
+            LoadArticles(source.Id);
 
             base.OnNavigatedTo(e);
         }
@@ -57,13 +58,19 @@ namespace NewsApp
             // Add each NewsSource to the ObservableCollection
             foreach (var article in articlesList.Articles)
             {
+                if(string.IsNullOrEmpty(article.UrlToImage))
+                {
+                    //article.UrlToImage = "http://placehold.it/350x150";
+                    article.UrlToImage = "https://unsplash.it/200/300/?random";
+                }
+
                 articles.Add(article);
             }
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-          
+            
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)

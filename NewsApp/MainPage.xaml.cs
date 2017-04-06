@@ -70,7 +70,17 @@ namespace NewsApp
             NewsSource source = (NewsSource) e.ClickedItem;
 
             // Navigate to the articles page and pass the source Id to fetch appropriate content
-            this.Frame.Navigate(typeof(ArticlesPage), source.Id);
+            this.Frame.Navigate(typeof(ArticlesPage), source);
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
