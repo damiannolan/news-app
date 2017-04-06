@@ -25,6 +25,7 @@ namespace NewsApp
     /// </summary>
     public sealed partial class ArticlesPage : Page
     {
+        private StorageService storageService;
         private INewsService newsService;
         private ObservableCollection<Article> articles;
         private NewsSource source;
@@ -33,6 +34,7 @@ namespace NewsApp
         {
             this.InitializeComponent();
 
+            storageService = new StorageService();
             newsService = new NewsService();
             articles = new ObservableCollection<Article>();
         }
@@ -58,6 +60,7 @@ namespace NewsApp
             // Add each NewsSource to the ObservableCollection
             foreach (var article in articlesList.Articles)
             {
+                // If the UrlToImage is null then replace with a random image
                 if(string.IsNullOrEmpty(article.UrlToImage))
                 {
                     //article.UrlToImage = "http://placehold.it/350x150";
@@ -70,7 +73,10 @@ namespace NewsApp
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            Article article = (Article) e.ClickedItem;
+
+            storageService.AddToFavourites(article);
+            storageService.SaveArticles();   
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
