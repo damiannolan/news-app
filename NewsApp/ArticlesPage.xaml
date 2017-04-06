@@ -8,21 +8,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.BottomAppBar>
+    <!--<Page.BottomAppBar>
         <CommandBar>
             <CommandBar.Content>
-                <AppBarButton x:Name="backButton" HorizontalAlignment="Left" Icon="Back" Click="backButton_Click"/>
+                <AppBarButton x:Name="backButton" HorizontalAlignment="Center" Icon="Back" Click="backButton_Click"/>
             </CommandBar.Content>
         </CommandBar>
-    </Page.BottomAppBar>
+    </Page.BottomAppBar>-->
 
     <Page.Resources>
         <DataTemplate x:Key="ArticleListDataTemplate" x:DataType="data:Article">
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                <Image Name="image" Source="{x:Bind UrlToImage}" HorizontalAlignment="Left" Width="500" />
+                <Image Name="image" Source="{x:Bind UrlToImage}" HorizontalAlignment="Left" Width="Auto" Height="Auto" />
 
-                <TextBlock Text="{x:Bind Title}" HorizontalAlignment="Left" FontSize="16" />
+                <TextBlock Text="{x:Bind Title}" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" TextWrapping="Wrap" />
                 <TextBlock Text="{x:Bind Author}" HorizontalAlignment="Left" FontSize="12" />
                 <TextBlock Text="{x:Bind Description}" HorizontalAlignment="Left" TextWrapping="Wrap"  FontSize="12" />
                 <HyperlinkButton Content="{x:Bind Url}" NavigateUri="{x:Bind Url}" HorizontalAlignment="Left" FontSize="10"/>
@@ -45,7 +45,7 @@
                   ItemsSource="{x:Bind articles}" 
                   ItemClick="ListView_ItemClick"
                   IsItemClickEnabled="True" 
-                  ItemTemplate="{StaticResource ArticleListDataTemplate}" BorderThickness="5" Margin="44,53,36,-5">
+                  ItemTemplate="{StaticResource ArticleListDataTemplate}" BorderThickness="5" Margin="5" Grid.RowSpan="2">
         </ListView>
     </Grid>
 </Page>

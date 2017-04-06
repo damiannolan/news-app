@@ -10,7 +10,7 @@
 
     <Page.Resources>
         <DataTemplate x:Key="NewsSourceListDataTemplate" x:DataType="data:NewsSource">
-            
+
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                 <!--<Image Name="image" Source="{x:Bind UrlsToLogos.Small}" HorizontalAlignment="Center" Width="150" />-->
                 <Ellipse Height="150" Width="150" HorizontalAlignment="Left">
@@ -24,7 +24,7 @@
                 <HyperlinkButton Content="{x:Bind Url}" NavigateUri="{x:Bind Url}" HorizontalAlignment="Left" FontSize="10"/>
 
                 <!--<StackPanel Margin="20,20,0,0" Orientation="Vertical" HorizontalAlignment="Left">                   
-                </StackPanel>-->              
+                </StackPanel>-->
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
@@ -51,7 +51,7 @@
                   ItemsSource="{x:Bind newsSources}" 
                   ItemClick="ListView_ItemClick" 
                   IsItemClickEnabled="True" 
-                  ItemTemplate="{StaticResource NewsSourceListDataTemplate}" BorderThickness="5" Margin="44,53,36,-5" RequestedTheme="Light">
+                  ItemTemplate="{StaticResource NewsSourceListDataTemplate}" BorderThickness="5" Margin="5" RequestedTheme="Light" Grid.RowSpan="2">
         </ListView>
     </Grid>
 </Page>
