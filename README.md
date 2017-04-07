@@ -28,9 +28,9 @@ News API is simple web service that returns JSON metadata for headlines currentl
 
 News API offers two end points
 
-	[https://newsapi.org/v1/sources](https://newsapi.org/v1/sources)
+- [https://newsapi.org/v1/sources](https://newsapi.org/v1/sources)
 
-	[https://newsapi.org/v1/articles](https://newsapi.org/v1/articles)
+- [https://newsapi.org/v1/articles](https://newsapi.org/v1/articles)
 
 An API Key is required to request articles from a particular source and articles can be retrieved easily by passing the News Source and API Key as Query String Paramters in the HTTP Request.
 
