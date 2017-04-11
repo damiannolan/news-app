@@ -3,6 +3,7 @@ using NewsApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -44,7 +45,15 @@ namespace NewsApp
             source = (NewsSource) e.Parameter;
             LoadArticles(source.Id);
 
-            List<Article> favourites = await storageService.GetArticlesFromStorage();
+            try
+            {
+                List<Article> favourites = await storageService.GetArticlesFromStorage();
+            } catch (FileNotFoundException exc)
+            {
+                // Handle exception accordingly
+                // Debug.WriteLine();
+            }
+            
             base.OnNavigatedTo(e);
         }
 
