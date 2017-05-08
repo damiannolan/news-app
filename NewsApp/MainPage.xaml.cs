@@ -59,6 +59,13 @@ namespace NewsApp
             // Add each NewsSource to the ObservableCollection
             foreach (var source in sources.Sources)
             {
+                // If the UrlToImage is null then replace with a random image
+                if (string.IsNullOrEmpty(source.UrlsToLogos.Small))
+                {
+                    //article.UrlToImage = "http://placehold.it/350x150";
+                    source.UrlsToLogos.Small = "https://unsplash.it/200/300/?random";
+                }
+
                 newsSources.Add(source);
             }
 

@@ -14,8 +14,9 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                 <!--<Image Name="image" Source="{x:Bind UrlsToLogos.Small}" HorizontalAlignment="Center" Width="150" />-->
                 <Ellipse Height="150" Width="150" HorizontalAlignment="Left">
+                    <!-- THIS WAS SUPPOSED TO BE THE IMAGE OF THE NEWS SOURCE BEFORE THE API WAS DEPRECATED -->
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="{x:Bind UrlsToLogos.Small}" Stretch="Uniform"/>
+                        <ImageBrush ImageSource="{x:Bind UrlsToLogos.Small }" Stretch="Uniform"/>
                     </Ellipse.Fill>
                 </Ellipse>
                 <TextBlock Text="{x:Bind Name}" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" />
